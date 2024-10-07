@@ -8,7 +8,7 @@ import Spinner from './Spinner';
 
 function City() {
   const {id} = useParams();
-  const {getCity, currentCity, isLoading, flagemojiToPNG} = useCities();
+  const {getCity, currentCity, isLoading} = useCities();
   const {cityName, emoji, notes} = currentCity;
   console.log(currentCity);
 
@@ -17,6 +17,11 @@ function City() {
   }, [id]);
   
   if (isLoading) return <Spinner></Spinner>;
+
+  function flagemojiToPNG(flag) {
+    const countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt()).map(char => String.fromCharCode(char-127397).toLowerCase()).join('')
+    return (<img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt='flag' />)
+  }
   
   return (
     <div className={styles.city}>
