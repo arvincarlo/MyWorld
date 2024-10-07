@@ -1,33 +1,44 @@
-import {useParams, useSearchParams} from 'react-router-dom';
+import {useEffect} from 'react';
+import {useParams} from 'react-router-dom';
+import {useCities} from '../contexts/CitiesContext'
+import styles from './City.module.css'
 
-/*eslint-disable*/
-
-const formatDate = (date) => 
-  new Intl.DateTimeFormat("en", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    weekday: "long"
-  }).format(new Date(date));
+import BackButton from './BackButton';
+import Spinner from './Spinner';
 
 function City() {
   const {id} = useParams();
-  const [searchParams, setSearchParams] = useSearchParams();
-    const lat = searchParams.get('lat');
-    const lng = searchParams.get('lng');
+  const {getCity, currentCity, isLoading, flagemojiToPNG} = useCities();
+  const {cityName, emoji, notes} = currentCity;
+  console.log(currentCity);
 
-  // TEMP DATA
-  const currentCity = {
-    cityName: "Lisbon",
-    emoji: "Lisbon",
-    date: "2014-",
-    notes: "My favorite city so far"
-  }
-
+  useEffect(function() {
+    getCity(id);
+  }, [id]);
+  
+  if (isLoading) return <Spinner></Spinner>;
+  
   return (
-    <div>
-      Main City {id}
-      <p>Position: {lng} {lat}</p>
+    <div className={styles.city}>
+      <div className={styles.row}>
+        <h6>City Name</h6>
+        <h3>
+          <span>{flagemojiToPNG(emoji)}</span> {cityName}
+        </h3>
+      </div>
+      <div className={styles.row}>
+        <h6>Your notes</h6>
+        <p>{notes}</p>
+      </div>
+      <div className={styles.row}>
+        <h6>Learn More</h6>
+        <a href={`https://en.wikipedia.org/wiki/${cityName}`} target="_blank" rel="noreferrer">
+          Check out {cityName} on Wikipedia &rarr;
+        </a>
+      </div>
+      <div>
+        <BackButton></BackButton>
+      </div>
     </div>
   )
 }
