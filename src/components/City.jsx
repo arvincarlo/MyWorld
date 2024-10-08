@@ -6,11 +6,15 @@ import styles from './City.module.css'
 import BackButton from './BackButton';
 import Spinner from './Spinner';
 
+// function flagemojiToPNG(flag) {
+//   const countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt()).map(char => String.fromCharCode(char-127397).toLowerCase()).join('')
+//   return (<img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt='flag' />)
+// }
+
 function City() {
   const {id} = useParams();
   const {getCity, currentCity, isLoading} = useCities();
-  const {cityName, emoji, notes} = currentCity;
-  console.log(currentCity);
+  const {cityName, notes} = currentCity;
 
   useEffect(function() {
     getCity(id);
@@ -18,17 +22,13 @@ function City() {
   
   if (isLoading) return <Spinner></Spinner>;
 
-  function flagemojiToPNG(flag) {
-    const countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt()).map(char => String.fromCharCode(char-127397).toLowerCase()).join('')
-    return (<img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt='flag' />)
-  }
   
   return (
     <div className={styles.city}>
       <div className={styles.row}>
         <h6>City Name</h6>
         <h3>
-          <span>{flagemojiToPNG(emoji)}</span> {cityName}
+          <span>🛫</span> {cityName}
         </h3>
       </div>
       <div className={styles.row}>
