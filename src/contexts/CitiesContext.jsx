@@ -1,4 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BASE_URL = 'http://localhost:9000';
 const CitiesContext = createContext();
@@ -25,14 +27,35 @@ function CitiesProvider({ children }) {
         }
         fetchCities();
     }, []);
-
+    
     async function getCity(id) {
         try {
+            setIsLoading(true);
             const response = await fetch(`${BASE_URL}/cities/${id}`);
             const data = await response.json();
             setCurrentCity(data);
         } catch (err) {
             console.error(err);
+        } finally {
+            setIsLoading(false);
+        }
+    }
+    
+    async function createCity(newCity) {
+        try {
+            setIsLoading(true);
+            const response = await fetch(`${BASE_URL}/cities`, {
+                method: 'POST',
+                body: JSON.stringify(newCity),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            const data = await response.json();
+            setCities(cities => [...cities, data]);
+            toast.success(`Successfully added ${data.cityName}.`);
+        } catch (err) {
+            toast.error(err)
         } finally {
             setIsLoading(false);
         }
@@ -49,10 +72,13 @@ function CitiesProvider({ children }) {
             isLoading,
             currentCity,
             getCity,
-            flagemojiToPNG
+            flagemojiToPNG,
+            createCity
         }}>
             {children}
+            <ToastContainer></ToastContainer>
         </CitiesContext.Provider>
+        
     )
 }
 
