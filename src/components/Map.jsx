@@ -1,24 +1,22 @@
-import {useSearchParams, useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Popup, Marker, useMap, useMapEvents } from 'react-leaflet';
-import {useState, useEffect} from 'react';
-import {useCities} from '../contexts/CitiesContext';
+import { useState, useEffect } from 'react';
+import { useCities } from '../contexts/CitiesContext';
 import { useGeolocation } from '../hooks/useGeolocation';
+import { useUrlPosition } from '../hooks/useUrlPosition';
 
 import styles from './Map.module.css';
 import Button from './Button';
 function Map() {
-    const [searchParams] = useSearchParams();
-    const {cities, flagemojiToPNG} = useCities();
-    const [mapPosition, setMapPosition] = useState([14, 50]);
+    const [mapPosition, setMapPosition] = useState([14.55, 121.01]);
     const {
         isLoading: isLoadingPosition,
         position: geolocationPosition,
         getPosition,
     } = useGeolocation();
+    const {cities, flagemojiToPNG} = useCities();
+    const [mapLat, mapLng] = useUrlPosition();
     
-    const mapLat = searchParams.get('lat');
-    const mapLng = searchParams.get('lng');
-
     useEffect(function() {
         if (mapLat, mapLng) {
             setMapPosition([mapLat, mapLng]);
@@ -49,7 +47,7 @@ function Map() {
                     </Marker>
                 ))}
                 <ChangeCenter position={mapPosition}></ChangeCenter>
-                <DeteckClick/>
+                <DetectClick/>
             </MapContainer>
         </div>
     )
@@ -62,11 +60,10 @@ function ChangeCenter({position}) {
     return null;
 }
 
-function DeteckClick() {
+function DetectClick() {
     const navigate = useNavigate();
     useMapEvents({
         click: e => {
-            console.log(e);
             // Interacting with the Map
             navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
         }
