@@ -60,6 +60,22 @@ function CitiesProvider({ children }) {
             setIsLoading(false);
         }
     }
+    
+    async function deleteCity(id) {
+        try {
+            setIsLoading(true);
+            await fetch(`${BASE_URL}/cities/${id}`, {
+                method: 'DELETE'
+            });
+            // Removing the city from the city array
+            setCities(cities => cities.filter(city => city.id !== id));
+            toast.success(`Successfully removed city.`);
+        } catch (err) {
+            toast.error(err)
+        } finally {
+            setIsLoading(false);
+        }
+    }
 
     function flagemojiToPNG(flag) {
         const countryCode = Array.from(flag, (codeUnit) => codeUnit.codePointAt()).map(char => String.fromCharCode(char-127397).toLowerCase()).join('')
@@ -73,7 +89,8 @@ function CitiesProvider({ children }) {
             currentCity,
             getCity,
             flagemojiToPNG,
-            createCity
+            createCity,
+            deleteCity
         }}>
             {children}
             <ToastContainer></ToastContainer>
