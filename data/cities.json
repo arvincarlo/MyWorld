@@ -1,159 +1,39 @@
 {
   "cities": [
     {
-      "cityName": "Lisbon",
-      "country": "Portugal",
-      "emoji": "🇵🇹",
-      "date": "2027-10-31T15:59:59.138Z",
-      "notes": "My favorite city so far!",
-      "position": {
-        "lat": 38.727881642324164,
-        "lng": -9.140900099907554
-      },
-      "id": "73930385"
-    },
-    {
-      "cityName": "Madrid",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2027-07-15T08:22:53.976Z",
-      "notes": "",
-      "position": {
-        "lat": 40.46635901755316,
-        "lng": -3.7133789062500004
-      },
-      "id": "17806751"
-    },
-    {
-      "cityName": "Berlin",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2027-02-12T09:24:11.863Z",
-      "notes": "Amazing 😃",
-      "position": {
-        "lat": 52.53586782505711,
-        "lng": 13.376933665713324
-      },
-      "id": "98443197"
-    },
-    {
-      "id": "e7c8",
-      "cityName": "Munoz",
+      "id": "548e",
+      "cityName": "Tuao",
       "country": "Philippines (the)",
       "emoji": "🇵🇭",
-      "date": "2024-10-08T08:46:54.843Z",
-      "notes": "ay di pa ako nakakpunta dito",
+      "date": "2024-10-10T04:04:41.749Z",
+      "notes": "test",
       "position": {
-        "lat": "15.69708644541173",
-        "lng": "120.93475341796876"
+        "lat": "17.612610761099077",
+        "lng": "121.49780273437501"
       }
     },
     {
-      "id": "f0e7",
-      "cityName": "Cuyapo",
+      "id": "4ac7",
+      "cityName": "Gumaca",
       "country": "Philippines (the)",
       "emoji": "🇵🇭",
-      "date": "2024-10-08T08:47:13.680Z",
+      "date": "2024-10-10T04:05:13.289Z",
       "notes": "test",
       "position": {
-        "lat": "15.826608507510938",
-        "lng": "120.64910888671876"
+        "lat": "13.83674650062699",
+        "lng": "122.15560913085939"
       }
     },
     {
-      "id": "29cf",
-      "cityName": "Tuguegarao",
+      "id": "2d73",
+      "cityName": "Legaspi",
       "country": "Philippines (the)",
       "emoji": "🇵🇭",
-      "date": "2024-10-08T08:47:32.223Z",
-      "notes": "yum \n",
+      "date": "2024-10-10T06:28:14.797Z",
+      "notes": "albay the best\n",
       "position": {
-        "lat": "17.65449123359241",
-        "lng": "121.73950195312501"
-      }
-    },
-    {
-      "id": "1035",
-      "cityName": "Quezon",
-      "country": "Philippines (the)",
-      "emoji": "🇵🇭",
-      "date": "2024-10-08T08:49:07.677Z",
-      "notes": "test",
-      "position": {
-        "lat": "7.721878499324502",
-        "lng": "125.22216796875001"
-      }
-    },
-    {
-      "id": "8e4b",
-      "cityName": "Loeng Nok Tha",
-      "country": "Thailand",
-      "emoji": "🇹🇭",
-      "date": "2024-10-08T08:49:55.616Z",
-      "notes": "test",
-      "position": {
-        "lat": "16.320139453117577",
-        "lng": "104.39208984375001"
-      }
-    },
-    {
-      "id": "f246",
-      "cityName": "Muang Xanasomboun",
-      "country": "Lao People's Democratic Republic (the)",
-      "emoji": "🇱🇦",
-      "date": "2024-10-08T08:50:01.583Z",
-      "notes": "test",
-      "position": {
-        "lat": "15.411319377981005",
-        "lng": "105.93017578125"
-      }
-    },
-    {
-      "id": "1339",
-      "cityName": "Sop Prap",
-      "country": "Thailand",
-      "emoji": "🇹🇭",
-      "date": "2024-10-08T08:50:15.817Z",
-      "notes": "test",
-      "position": {
-        "lat": "17.895114303749143",
-        "lng": "99.27246093750001"
-      }
-    },
-    {
-      "id": "e871",
-      "cityName": "Pantanaw",
-      "country": "Myanmar",
-      "emoji": "🇲🇲",
-      "date": "2024-10-08T08:51:00.557Z",
-      "notes": "test",
-      "position": {
-        "lat": "16.90968361555865",
-        "lng": "95.29541015625001"
-      }
-    },
-    {
-      "id": "044c",
-      "cityName": "Non Sung",
-      "country": "Thailand",
-      "emoji": "🇹🇭",
-      "date": "2024-10-08T08:52:04.169Z",
-      "notes": "tset",
-      "position": {
-        "lat": "15.178180945596363",
-        "lng": "102.15087890625001"
-      }
-    },
-    {
-      "id": "e3f0",
-      "cityName": "Hanoi",
-      "country": "Viet Nam",
-      "emoji": "🇻🇳",
-      "date": "2024-10-08T08:52:25.583Z",
-      "notes": "dream country",
-      "position": {
-        "lat": "20.992214250886114",
-        "lng": "105.85876464843751"
+        "lat": "13.111580118251661",
+        "lng": "123.77197265625001"
       }
     }
   ]

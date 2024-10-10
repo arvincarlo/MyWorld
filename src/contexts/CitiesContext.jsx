@@ -1,49 +1,96 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useEffect, useReducer } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const BASE_URL = 'http://localhost:9000';
 const CitiesContext = createContext();
+const initialState = {
+    cities: [],
+    isLoading: false,
+    currentCity: {},
+    error: ''
+}
+
+function reducer(state, action) {
+    switch(action.type) {
+        case 'loading':
+            return {
+                ...state,
+                isLoading: true
+            }
+        case 'cities/loaded':
+            return {
+                ...state,
+                isLoading: false,
+                cities: action.payload
+            }
+        case 'city/loaded':
+            return {
+                ...state,
+                isLoading: false,
+                currentCity: action.payload
+            }
+        case 'city/created':
+            return {
+                ...state,
+                isLoading: false,
+                cities: [
+                    ...state.cities,
+                    action.payload
+                ],
+                currentCity: action.payload
+            }
+        case 'city/deleted': 
+            return {
+                ...state,
+                isLoading: false,
+                cities: state.cities.filter(city => city.id !== action.payload),
+                currentCity: action.payload
+            }
+            
+        case 'rejected':
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+        default: throw new Error('Unkown action type');
+    }
+}
 
 function CitiesProvider({ children }) {
-    const [cities, setCities] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const [currentCity, setCurrentCity] = useState({});
+    const [{cities, isLoading, currentCity, error}, dispatch] = useReducer(reducer, initialState);
 
     useEffect(function () {
         async function fetchCities() {
+            dispatch({type: 'loading'});
             try {
-                setIsLoading(true);
                 const response = await fetch(`${BASE_URL}/cities`);
                 const data = await response.json();
-                setCities(data);
+                if (data) dispatch({type: 'cities/loaded', payload: data});
             }
             catch (error) {
-                console.error(error);
-            }
-            finally {
-                setIsLoading(false);
+                dispatch({type: 'rejected', payload: "There was an error in fetching the cities"});
             }
         }
         fetchCities();
     }, []);
     
     async function getCity(id) {
+        if (id === currentCity.id) return;
+        dispatch({type: 'loading'});
         try {
-            setIsLoading(true);
             const response = await fetch(`${BASE_URL}/cities/${id}`);
             const data = await response.json();
-            setCurrentCity(data);
-        } catch (err) {
-            console.error(err);
-        } finally {
-            setIsLoading(false);
+            dispatch({type: 'city/loaded', payload: data});
+        } catch (error) {
+            dispatch({type: 'rejected', payload: "There was an error loading the city"})
         }
     }
     
     async function createCity(newCity) {
+        dispatch({type: 'loading'});
         try {
-            setIsLoading(true);
             const response = await fetch(`${BASE_URL}/cities`, {
                 method: 'POST',
                 body: JSON.stringify(newCity),
@@ -52,28 +99,26 @@ function CitiesProvider({ children }) {
                 }
             });
             const data = await response.json();
-            setCities(cities => [...cities, data]);
+            dispatch({type: 'city/created', payload: data});
             toast.success(`Successfully added ${data.cityName}.`);
-        } catch (err) {
-            toast.error(err)
-        } finally {
-            setIsLoading(false);
+        } catch (error) {
+            toast.error(error);
+            dispatch({type: 'rejected', payload: error});
         }
     }
     
     async function deleteCity(id) {
+        dispatch({type: 'loading'});
         try {
-            setIsLoading(true);
             await fetch(`${BASE_URL}/cities/${id}`, {
                 method: 'DELETE'
             });
             // Removing the city from the city array
-            setCities(cities => cities.filter(city => city.id !== id));
+            dispatch({type: 'city/deleted', payload: id});
             toast.success(`Successfully removed city.`);
-        } catch (err) {
-            toast.error(err)
-        } finally {
-            setIsLoading(false);
+        } catch (error) {
+            dispatch({type: 'rejected', payload: error});
+            toast.error(error);
         }
     }
 
@@ -90,7 +135,8 @@ function CitiesProvider({ children }) {
             getCity,
             flagemojiToPNG,
             createCity,
-            deleteCity
+            deleteCity,
+            error
         }}>
             {children}
             <ToastContainer></ToastContainer>
