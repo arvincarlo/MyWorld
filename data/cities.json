@@ -1,39 +1,27 @@
 {
   "cities": [
     {
-      "id": "548e",
-      "cityName": "Tuao",
+      "id": "64f8",
+      "cityName": "Kasibu",
       "country": "Philippines (the)",
       "emoji": "🇵🇭",
-      "date": "2024-10-10T04:04:41.749Z",
-      "notes": "test",
+      "date": "2024-10-10T08:10:45.263Z",
+      "notes": "test test",
       "position": {
-        "lat": "17.612610761099077",
-        "lng": "121.49780273437501"
+        "lat": "16.320139453117577",
+        "lng": "121.42089843750001"
       }
     },
     {
-      "id": "4ac7",
-      "cityName": "Gumaca",
+      "id": "010d",
+      "cityName": "Pantabangan",
       "country": "Philippines (the)",
       "emoji": "🇵🇭",
-      "date": "2024-10-10T04:05:13.289Z",
-      "notes": "test",
+      "date": "2024-10-10T08:10:49.360Z",
+      "notes": "test test",
       "position": {
-        "lat": "13.83674650062699",
-        "lng": "122.15560913085939"
-      }
-    },
-    {
-      "id": "2d73",
-      "cityName": "Legaspi",
-      "country": "Philippines (the)",
-      "emoji": "🇵🇭",
-      "date": "2024-10-10T06:28:14.797Z",
-      "notes": "albay the best\n",
-      "position": {
-        "lat": "13.111580118251661",
-        "lng": "123.77197265625001"
+        "lat": "15.855673509998681",
+        "lng": "121.13525390625001"
       }
     }
   ]
