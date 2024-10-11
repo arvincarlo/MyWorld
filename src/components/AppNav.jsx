@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useCities } from '../contexts/CitiesContext';
 
 function AppNav() {
-    const { cities } = useCities();
+    const { cities, countries } = useCities();
+    
     return (
         <nav className={styles.nav}>
             <ul>
@@ -11,7 +12,7 @@ function AppNav() {
                     <NavLink to='cities'>Cities {cities.length > 0 && `(${cities.length})`}</NavLink>
                 </li>
                 <li>
-                    <NavLink to='countries'>Countries</NavLink>
+                    <NavLink to='countries'>Countries {countries.length > 0 && `(${countries.length})`}</NavLink>
                 </li>
             </ul>
         </nav>

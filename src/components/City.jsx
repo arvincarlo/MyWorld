@@ -13,8 +13,8 @@ import Spinner from './Spinner';
 
 function City() {
   const {id} = useParams();
-  const {getCity, currentCity, isLoading} = useCities();
-  const {cityName, notes} = currentCity;
+  const {getCity, currentCity, isLoading, flagemojiToPNG} = useCities();
+  const {cityName, notes, emoji} = currentCity;
 
   useEffect(function() {
     getCity(id);
@@ -28,7 +28,7 @@ function City() {
       <div className={styles.row}>
         <h6>City Name</h6>
         <h3>
-          <span>🛫</span> {cityName}
+          <span>{emoji && flagemojiToPNG(emoji)}</span> {cityName}
         </h3>
       </div>
       <div className={styles.row}>

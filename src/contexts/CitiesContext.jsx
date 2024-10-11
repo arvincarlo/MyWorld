@@ -61,6 +61,15 @@ function reducer(state, action) {
 function CitiesProvider({ children }) {
     const [{cities, isLoading, currentCity, error}, dispatch] = useReducer(reducer, initialState);
 
+    // Derived countries from cities
+    const countries = cities.reduce((accumulator, city) => {
+        if (!accumulator.map(element => element.country).includes(city.country)) {
+            return [...accumulator, {country: city.country, emoji: city.emoji, id: city.id}];
+        } else {
+            return accumulator;
+        }
+    }, []);
+
     useEffect(function () {
         async function fetchCities() {
             dispatch({type: 'loading'});
@@ -136,7 +145,8 @@ function CitiesProvider({ children }) {
             flagemojiToPNG,
             createCity,
             deleteCity,
-            error
+            error, 
+            countries
         }}>
             {children}
             <ToastContainer></ToastContainer>

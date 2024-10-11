@@ -6,19 +6,10 @@ import Message from './Message';
 import {useCities} from '../contexts/CitiesContext';
 
 function CountryList() {
-    const {cities, isLoading} = useCities();
+    const {cities, countries, isLoading} = useCities();
 
     if (isLoading) return <Spinner />;
     if (!cities.length) return <Message message="Add a new city by clicking on a city on the map"/>
-
-    const countries = cities.reduce((accumulator, city) => {
-        if (!accumulator.map(element => element.country).includes(city.country)) {
-            return [...accumulator, {country: city.country, emoji: city.emoji, id: city.id}];
-        } else {
-            return accumulator;
-        }
-    }
-    , []);
 
     return (
         <ul className={styles.countryList}>
