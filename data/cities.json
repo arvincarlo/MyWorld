@@ -23,6 +23,30 @@
         "lat": "15.855673509998681",
         "lng": "121.13525390625001"
       }
+    },
+    {
+      "id": "537b",
+      "cityName": "Porac",
+      "country": "Philippines (the)",
+      "emoji": "🇵🇭",
+      "date": "2024-10-11T02:51:21.591Z",
+      "notes": "TEsting porac",
+      "position": {
+        "lat": "15.109249669742283",
+        "lng": "120.54748535156251"
+      }
+    },
+    {
+      "id": "554b",
+      "cityName": "Hue",
+      "country": "Viet Nam",
+      "emoji": "🇻🇳",
+      "date": "2024-10-11T02:51:40.736Z",
+      "notes": "Hue imperial city\n",
+      "position": {
+        "lat": "16.463743833326188",
+        "lng": "107.58155822753908"
+      }
     }
   ]
 }
