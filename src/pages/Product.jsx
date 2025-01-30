@@ -11,17 +11,18 @@ export default function Product() {
           alt="person with dog overlooking mountain with sunset"
         />
         <div>
-          <h2>About WanderWise.</h2>
+          <h2>Map Your Adventures</h2>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo est
-            dicta illum vero culpa cum quaerat architecto sapiente eius non
-            soluta, molestiae nihil laborum, placeat debitis, laboriosam at fuga
-            perspiciatis?
+            Pin each city or country you have visited on a visually engaging map.
           </p>
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis
-            doloribus libero sunt expedita ratione iusto, magni, id sapiente
-            sequi officiis et.
+            Zoom in and out to explore different regions and see your travel history at a glance.
+          </p>
+          <p>
+            Add notes, and memories to each pin, creating a personalized travel diary.
+          </p>
+          <p>
+            Relive your adventures by browsing through your pinned locations and the stories behind them.
           </p>
         </div>
       </section>

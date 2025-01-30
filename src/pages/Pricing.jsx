@@ -11,12 +11,13 @@ export default function Product() {
           <h2>
             Simple pricing.
             <br />
-            Just $9/month.
+            Just $2/month.
           </h2>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae vel
-            labore mollitia iusto. Recusandae quos provident, laboriosam fugit
-            voluptatem iste.
+            Start your journey with Pin Voyage today and make every trip unforgettable. 
+          </p>
+          <p>
+            Discover the world and keep track of your adventures with Pin Voyage, the ultimate app for travelers. Pin each city or country you visit and create a visual map of your journeys.
           </p>
         </div>
         <img src="bg.jpg" alt="overview of a large city with skyscrapers" />
